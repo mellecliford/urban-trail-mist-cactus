@@ -13,12 +13,15 @@ export const Route = createFileRoute("/api/showcase-media/$id")({
         `;
         const row = rows[0];
         if (!row) return new Response("Not found", { status: 404 });
+        const allowed = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
+        const mime = allowed.has(row.mime) ? row.mime : "";
+        if (!mime) return new Response("Not found", { status: 404 });
         const bytes = toBytes(row.bytes);
         const body = new ArrayBuffer(bytes.byteLength);
         new Uint8Array(body).set(bytes);
         return new Response(body, {
           headers: {
-            "content-type": row.mime || "application/octet-stream",
+            "content-type": mime,
             "cache-control": "public, max-age=0, must-revalidate",
             "x-content-type-options": "nosniff",
           },

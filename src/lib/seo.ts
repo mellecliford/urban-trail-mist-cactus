@@ -40,10 +40,10 @@ export function resolveSeo(pathname: string, search = ""): SeoMeta {
 
   const pages: Record<string, { title: string; description: string }> = {
     "/": {
-      title: fr ? "eveOps Group | Services professionnels, logiciels et solutions IA" : "eveOps Group | Professional Services, Software & AI Solutions",
+      title: fr ? "eveOps Group | Services professionnels et ingénierie logicielle" : "eveOps Group | Professional services and software",
       description: fr
-        ? "eveOps Group combine solutions de main-d’œuvre, services de données IA, achats et ingénierie logicielle par l’intermédiaire de Unity Integrated Solutions et eveDev Ops."
-        : "eveOps Group connects professional global workforce solutions with software engineering, AI, and digital product development.",
+        ? "eveOps Group réunit Unity Integrated Solutions pour les services professionnels et eveDev Ops pour le logiciel, l’IA et les produits numériques."
+        : "eveOps Group is the parent of Unity Integrated Solutions and eveDev Ops. Professional services, and software, AI, and digital products.",
     },
     "/about": {
       title: fr ? "À propos d’eveOps Group | Services professionnels et ingénierie logicielle" : "About eveOps Group | Professional Services & Software Engineering",
@@ -54,7 +54,7 @@ export function resolveSeo(pathname: string, search = ""): SeoMeta {
     "/contact": {
       title: fr ? "Contact eveOps Group | Démarrer une conversation" : "Contact eveOps Group | Start a Project Conversation",
       description: fr
-        ? "Dites à eveOps si vous avez besoin de services professionnels ou de développement logiciel."
+        ? "Dites à eveOps Group si vous avez besoin de services professionnels ou de développement logiciel."
         : "Tell eveOps Group whether you need professional services or software development and start a project intake conversation.",
     },
     "/unity/contact": {
@@ -64,10 +64,10 @@ export function resolveSeo(pathname: string, search = ""): SeoMeta {
         : "Tell Unity Integrated Solutions about your professional service requirement and start a service intake.",
     },
     "/insights": {
-      title: fr ? "Réflexions | eveOps Group" : "Insights | eveOps Group",
+      title: fr ? "Journal | Technologie et entreprise | eveOps Group" : "Journal | Technology and business | eveOps Group",
       description: fr
-        ? "Le futur espace éditorial eveOps Group pour les services professionnels, les données IA, l’ingénierie logicielle, l’automatisation, le cloud et les produits numériques."
-        : "A future-focused eveOps Group editorial hub for professional services, AI data, software engineering, automation, cloud, and product development insights.",
+        ? "Un forum public sur la technologie et l’entreprise. Posez une question ou répondez, par écrit ou en message vocal, avec ou sans compte."
+        : "A public forum for technology and business. Ask or answer in writing or by voice, with or without an account.",
     },
     "/portfolio": {
       title: fr ? "Réalisations eveOps Group | Produits et solutions clients" : "eveOps Group Portfolio | Products & Client Solutions",
@@ -137,6 +137,18 @@ export function resolveSeo(pathname: string, search = ""): SeoMeta {
     };
   }
 
+  if (path.startsWith("/insights/") && path.length > "/insights/".length) {
+    const words = decodeURIComponent(path.slice("/insights/".length)).replace(/-[a-z0-9]{4}$/i, "").replace(/-/g, " ");
+    return {
+      title: `${words} | Journal | eveOps Group`,
+      description: fr
+        ? "Un fil du journal eveOps Group sur la technologie et l’entreprise."
+        : "A thread on the eveOps Group journal for technology and business.",
+      canonicalPath: path,
+      noindex: false,
+    };
+  }
+
   const known = pages[path];
   if (!known) {
     return {
@@ -156,6 +168,7 @@ export function structuredData(pathname: string, search = "") {
   const organization = {
     "@type": "Organization",
     name: "eveOps Group",
+    alternateName: "eveOps",
     url: SITE_ORIGIN,
     logo: `${SITE_ORIGIN}/favicon.svg`,
     email: "support@eveopsgroup.com",
@@ -200,7 +213,7 @@ export function structuredData(pathname: string, search = "") {
   const graph: object[] = [organization, website, page];
   const trail = breadcrumbs(seo.canonicalPath, locale);
   if (trail) graph.push(trail);
-  if (seo.canonicalPath === "/contact" || seo.canonicalPath === "/unity/contact") {
+  if (seo.canonicalPath === "/" || seo.canonicalPath === "/contact" || seo.canonicalPath === "/unity/contact") {
     graph.push({
       "@type": "FAQPage",
       mainEntity: contactFaqs(locale).map((item) => ({
@@ -270,7 +283,7 @@ function crumbName(part: string, locale: PublicLocale) {
     services: ["Services", "Services"],
     products: ["Products", "Produits"],
     shweng: ["Shweng", "Shweng"],
-    insights: ["Insights", "Réflexions"],
+    insights: ["Journal", "Journal"],
     portfolio: ["Portfolio", "Réalisations"],
     privacy: ["Privacy", "Confidentialité"],
     cookies: ["Cookies", "Cookies"],

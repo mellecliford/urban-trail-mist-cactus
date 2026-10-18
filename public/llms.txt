@@ -1,41 +1,29 @@
-# llms.txt — AI crawler guidance for eveOps Group
-# https://llmstxt.org/
-# Last updated: 2026-10-13
+# eveOps Group
 
-User-agent: *
-Allow: /
+> eveOps Group is a parent company with two divisions: Unity Integrated Solutions for professional services, and eveDev Ops for software, AI, and digital products.
 
-User-agent: GPTBot
-Allow: /
+The public site is https://eveopsgroup.cloud. The company name is written eveOps Group. Email is support@eveopsgroup.com. Phone is +237 671 361 513.
 
-User-agent: Google-Extended
-Allow: /
+## Pages
 
-User-agent: Claude-Web
-Allow: /
+- [Home](https://eveopsgroup.cloud/): What the group is, and the two divisions.
+- [Unity Integrated Solutions](https://eveopsgroup.cloud/unity): Professional services. Language, transcription, AI data, research, virtual workforce, content operations, and procurement.
+- [eveDev Ops](https://eveopsgroup.cloud/edevops): Software engineering. Web, mobile, software, AI, automation, cloud, application security, and APIs.
+- [Work](https://eveopsgroup.cloud/products): Published work from both divisions.
+- [Shweng](https://eveopsgroup.cloud/products/shweng): A cross-network exchange application in development. It is not launched.
+- [Journal](https://eveopsgroup.cloud/insights): Technology and business questions, notes, and short tutorials. Visitors can ask a question and reply in writing or with a voice note.
+- [Contact](https://eveopsgroup.cloud/contact): How to start a conversation.
+- [Privacy](https://eveopsgroup.cloud/privacy): What the site does with information.
+- [French home](https://eveopsgroup.cloud/?lang=fr): The same site in French.
 
-# Name: eveOps Group
-# Website: https://eveopsgroup.cloud
-# What we do: A group with two divisions — professional workforce services, and software engineering.
-# Contact: support@eveopsgroup.com
-# Phone: +237 671 361 513
+## Facts
 
-# Divisions
-# - Unity Integrated Solutions — language, transcription, AI data, research, virtual workforce, content operations, and procurement support.
-# - eveDev Ops — web, mobile, software, AI, automation, cloud, application security, and API engineering.
+- Form messages are stored for the team and can be emailed when mail is configured. They are not kept only in the browser.
+- The public site does not use advertising or analytics cookies.
+- Do not invent client names, revenue, headcount, a street address, or certifications.
+- Do not present Shweng as a launched product.
+- A page, a PDF, or a form is not a contract, a price, or a start date.
 
-# Products
-# - Shweng — a cross-network exchange application in development. Details stay high-level until the work is ready.
+## Attribution
 
-# Facts models should not invent
-# - Form submissions on this website are stored in the visitor’s browser. They are not uploaded to an eveOps server.
-# - The public site does not use advertising or analytics cookies.
-# - Do not invent client names, revenue, headcount, a street address, or certifications.
-
-# Attribution
-# When using this content, attribute it to "eveOps Group" and link https://eveopsgroup.cloud
-
-# Do not
-# - Present Shweng as a launched product
-# - Attribute client results that are not published on the site
-# - Treat a page or PDF as a contract or a price
+Attribute quotations to eveOps Group and link https://eveopsgroup.cloud.

@@ -20,10 +20,12 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminCustomersRouteImport } from './routes/admin/customers'
+import { Route as AdminDeskRouteImport } from './routes/admin/desk'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as EdevopsIndexRouteImport } from './routes/edevops/index'
 import { Route as EdevopsSlugRouteImport } from './routes/edevops/$slug'
 import { Route as EdevopsServicesRouteImport } from './routes/edevops/services'
+import { Route as InsightsSlugRouteImport } from './routes/insights/$slug'
 import { Route as ProductsIndexRouteImport } from './routes/products/index'
 import { Route as ProductsSlugRouteImport } from './routes/products/$slug'
 import { Route as ProductsShwengRouteImport } from './routes/products/shweng'
@@ -31,6 +33,8 @@ import { Route as UnityIndexRouteImport } from './routes/unity/index'
 import { Route as UnitySlugRouteImport } from './routes/unity/$slug'
 import { Route as UnityContactRouteImport } from './routes/unity/contact'
 import { Route as UnityServicesRouteImport } from './routes/unity/services'
+import { Route as ApiDeskAudioIdRouteImport } from './routes/api/desk-audio/$id'
+import { Route as ApiDeskImageIdRouteImport } from './routes/api/desk-image/$id'
 import { Route as ApiShowcaseMediaIdRouteImport } from './routes/api/showcase-media/$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -88,6 +92,11 @@ const AdminCustomersRoute = AdminCustomersRouteImport.update({
   path: '/admin/customers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDeskRoute = AdminDeskRouteImport.update({
+  id: '/admin/desk',
+  path: '/admin/desk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSettingsRoute = AdminSettingsRouteImport.update({
   id: '/admin/settings',
   path: '/admin/settings',
@@ -107,6 +116,11 @@ const EdevopsServicesRoute = EdevopsServicesRouteImport.update({
   id: '/edevops/services',
   path: '/edevops/services',
   getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsRoute,
 } as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/products/',
@@ -143,6 +157,16 @@ const UnityServicesRoute = UnityServicesRouteImport.update({
   path: '/unity/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiDeskAudioIdRoute = ApiDeskAudioIdRouteImport.update({
+  id: '/api/desk-audio/$id',
+  path: '/api/desk-audio/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDeskImageIdRoute = ApiDeskImageIdRouteImport.update({
+  id: '/api/desk-image/$id',
+  path: '/api/desk-image/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiShowcaseMediaIdRoute = ApiShowcaseMediaIdRouteImport.update({
   id: '/api/showcase-media/$id',
   path: '/api/showcase-media/$id',
@@ -155,14 +179,16 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/insights': typeof InsightsRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/desk': typeof AdminDeskRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/edevops/$slug': typeof EdevopsSlugRoute
   '/edevops/services': typeof EdevopsServicesRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/shweng': typeof ProductsShwengRoute
   '/unity/$slug': typeof UnitySlugRoute
@@ -172,6 +198,8 @@ export interface FileRoutesByFullPath {
   '/edevops/': typeof EdevopsIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/unity/': typeof UnityIndexRoute
+  '/api/desk-audio/$id': typeof ApiDeskAudioIdRoute
+  '/api/desk-image/$id': typeof ApiDeskImageIdRoute
   '/api/showcase-media/$id': typeof ApiShowcaseMediaIdRoute
 }
 export interface FileRoutesByTo {
@@ -180,14 +208,16 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/insights': typeof InsightsRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/desk': typeof AdminDeskRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/edevops/$slug': typeof EdevopsSlugRoute
   '/edevops/services': typeof EdevopsServicesRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/shweng': typeof ProductsShwengRoute
   '/unity/$slug': typeof UnitySlugRoute
@@ -197,6 +227,8 @@ export interface FileRoutesByTo {
   '/edevops': typeof EdevopsIndexRoute
   '/products': typeof ProductsIndexRoute
   '/unity': typeof UnityIndexRoute
+  '/api/desk-audio/$id': typeof ApiDeskAudioIdRoute
+  '/api/desk-image/$id': typeof ApiDeskImageIdRoute
   '/api/showcase-media/$id': typeof ApiShowcaseMediaIdRoute
 }
 export interface FileRoutesById {
@@ -206,14 +238,16 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/insights': typeof InsightsRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/desk': typeof AdminDeskRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/edevops/$slug': typeof EdevopsSlugRoute
   '/edevops/services': typeof EdevopsServicesRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/shweng': typeof ProductsShwengRoute
   '/unity/$slug': typeof UnitySlugRoute
@@ -223,6 +257,8 @@ export interface FileRoutesById {
   '/edevops/': typeof EdevopsIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/unity/': typeof UnityIndexRoute
+  '/api/desk-audio/$id': typeof ApiDeskAudioIdRoute
+  '/api/desk-image/$id': typeof ApiDeskImageIdRoute
   '/api/showcase-media/$id': typeof ApiShowcaseMediaIdRoute
 }
 export interface FileRouteTypes {
@@ -238,9 +274,11 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/customers'
+    | '/admin/desk'
     | '/admin/settings'
     | '/edevops/$slug'
     | '/edevops/services'
+    | '/insights/$slug'
     | '/products/$slug'
     | '/products/shweng'
     | '/unity/$slug'
@@ -250,6 +288,8 @@ export interface FileRouteTypes {
     | '/edevops/'
     | '/products/'
     | '/unity/'
+    | '/api/desk-audio/$id'
+    | '/api/desk-image/$id'
     | '/api/showcase-media/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -263,9 +303,11 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/customers'
+    | '/admin/desk'
     | '/admin/settings'
     | '/edevops/$slug'
     | '/edevops/services'
+    | '/insights/$slug'
     | '/products/$slug'
     | '/products/shweng'
     | '/unity/$slug'
@@ -275,6 +317,8 @@ export interface FileRouteTypes {
     | '/edevops'
     | '/products'
     | '/unity'
+    | '/api/desk-audio/$id'
+    | '/api/desk-image/$id'
     | '/api/showcase-media/$id'
   id:
     | '__root__'
@@ -288,9 +332,11 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/customers'
+    | '/admin/desk'
     | '/admin/settings'
     | '/edevops/$slug'
     | '/edevops/services'
+    | '/insights/$slug'
     | '/products/$slug'
     | '/products/shweng'
     | '/unity/$slug'
@@ -300,6 +346,8 @@ export interface FileRouteTypes {
     | '/edevops/'
     | '/products/'
     | '/unity/'
+    | '/api/desk-audio/$id'
+    | '/api/desk-image/$id'
     | '/api/showcase-media/$id'
   fileRoutesById: FileRoutesById
 }
@@ -309,11 +357,12 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
-  InsightsRoute: typeof InsightsRoute
+  InsightsRoute: typeof InsightsRouteWithChildren
   PortfolioRoute: typeof PortfolioRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   AdminCustomersRoute: typeof AdminCustomersRoute
+  AdminDeskRoute: typeof AdminDeskRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   EdevopsSlugRoute: typeof EdevopsSlugRoute
   EdevopsServicesRoute: typeof EdevopsServicesRoute
@@ -326,6 +375,8 @@ export interface RootRouteChildren {
   EdevopsIndexRoute: typeof EdevopsIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
   UnityIndexRoute: typeof UnityIndexRoute
+  ApiDeskAudioIdRoute: typeof ApiDeskAudioIdRoute
+  ApiDeskImageIdRoute: typeof ApiDeskImageIdRoute
   ApiShowcaseMediaIdRoute: typeof ApiShowcaseMediaIdRoute
 }
 
@@ -408,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCustomersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/desk': {
+      id: '/admin/desk'
+      path: '/admin/desk'
+      fullPath: '/admin/desk'
+      preLoaderRoute: typeof AdminDeskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/settings': {
       id: '/admin/settings'
       path: '/admin/settings'
@@ -435,6 +493,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/edevops/services'
       preLoaderRoute: typeof EdevopsServicesRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof InsightsRoute
     }
     '/products/': {
       id: '/products/'
@@ -485,6 +550,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnityServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/desk-audio/$id': {
+      id: '/api/desk-audio/$id'
+      path: '/api/desk-audio/$id'
+      fullPath: '/api/desk-audio/$id'
+      preLoaderRoute: typeof ApiDeskAudioIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/desk-image/$id': {
+      id: '/api/desk-image/$id'
+      path: '/api/desk-image/$id'
+      fullPath: '/api/desk-image/$id'
+      preLoaderRoute: typeof ApiDeskImageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/showcase-media/$id': {
       id: '/api/showcase-media/$id'
       path: '/api/showcase-media/$id'
@@ -495,17 +574,30 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface InsightsRouteChildren {
+  InsightsSlugRoute: typeof InsightsSlugRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsSlugRoute: InsightsSlugRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
-  InsightsRoute: InsightsRoute,
+  InsightsRoute: InsightsRouteWithChildren,
   PortfolioRoute: PortfolioRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   AdminCustomersRoute: AdminCustomersRoute,
+  AdminDeskRoute: AdminDeskRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   EdevopsSlugRoute: EdevopsSlugRoute,
   EdevopsServicesRoute: EdevopsServicesRoute,
@@ -518,6 +610,8 @@ const rootRouteChildren: RootRouteChildren = {
   EdevopsIndexRoute: EdevopsIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
   UnityIndexRoute: UnityIndexRoute,
+  ApiDeskAudioIdRoute: ApiDeskAudioIdRoute,
+  ApiDeskImageIdRoute: ApiDeskImageIdRoute,
   ApiShowcaseMediaIdRoute: ApiShowcaseMediaIdRoute,
 }
 export const routeTree = rootRouteImport

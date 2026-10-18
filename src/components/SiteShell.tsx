@@ -49,6 +49,7 @@ function localizeNavigation(label: string, locale: "en" | "fr") {
         Workforce: "Équipes",
         Divisions: "Divisions",
         Work: "Réalisations",
+        Journal: "Journal",
       } as Record<string, string>
     )[label] || label
   );
@@ -88,6 +89,7 @@ const parentNav = [
   ["Products", "/products"],
   ["Work", "/portfolio"],
   ["About", "/about"],
+  ["Journal", "/insights"],
 ] as const;
 
 export function SiteHeader() {
@@ -247,7 +249,7 @@ export function SiteFooter() {
               <p className="footer-label">eveOps</p>
               <LocaleLink to="/about">{fr ? "À propos" : "About"}</LocaleLink>
               <LocaleLink to="/contact">Contact</LocaleLink>
-              <LocaleLink to="/insights">{fr ? "Réflexions" : "Insights"}</LocaleLink>
+              <LocaleLink to="/insights">{fr ? "Journal" : "Journal"}</LocaleLink>
             </div>
             <div>
               <p className="footer-label footer-label--unity">Unity Integrated Solutions</p>

@@ -5,5 +5,6 @@ Allow: /
 Disallow: /api/
 Disallow: /__grok/
 Disallow: /admin
+Disallow: /admin/
 
 Sitemap: https://eveopsgroup.cloud/sitemap.xml

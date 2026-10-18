@@ -84,7 +84,7 @@ export const Route = createRootRoute({
         { rel: "stylesheet", href: appCss },
         { rel: "manifest", href: "/__grok/manifest.webmanifest" },
         { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
-        { rel: "canonical", href: canonical },
+        { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "LLM guidance for eveOps Group" },
         ...(imagePreload ? [{ rel: "preload" as const, as: "image" as const, href: imagePreload }] : []),
         { rel: "alternate", hreflang: "en", href: absoluteUrl(seo.canonicalPath, "en") },
         { rel: "alternate", hreflang: "fr", href: absoluteUrl(seo.canonicalPath, "fr") },

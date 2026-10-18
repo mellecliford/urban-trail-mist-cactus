@@ -37,6 +37,7 @@ export function StudioGate({ title, children }: { title: string; children: React
         <nav className="studio__nav">
           <Link to="/admin">Products</Link>
           <Link to="/admin/customers">Customers</Link>
+          <Link to="/admin/desk">Journal</Link>
           <Link to="/admin/settings">Settings</Link>
           <Link to="/products">View the site</Link>
           <button
