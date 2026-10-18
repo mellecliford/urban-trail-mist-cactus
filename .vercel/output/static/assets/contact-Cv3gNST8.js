@@ -1,1 +1,0 @@
-import{v as e}from"./LocaleLink-CROJhYTO.js";import{t}from"./ContactPage-B7AtkDuK.js";var n=e(),r=()=>(0,n.jsx)(t,{scope:`unity`});export{r as component};

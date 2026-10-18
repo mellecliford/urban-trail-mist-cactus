@@ -1,1 +1,0 @@
-import{v as e}from"./LocaleLink-CROJhYTO.js";import{t}from"./DivisionPage-At1k4l3C.js";var n=e(),r=()=>(0,n.jsx)(t,{division:`unity`});export{r as component};

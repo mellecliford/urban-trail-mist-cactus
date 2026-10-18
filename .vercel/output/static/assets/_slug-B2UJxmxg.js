@@ -1,1 +1,0 @@
-import{v as e}from"./LocaleLink-CROJhYTO.js";import{t}from"./ServiceDetailPage-7vtEGwge.js";import{t as n}from"./index-CmoCSmJF.js";var r=e();function i(){let{slug:e}=n.useParams();return(0,r.jsx)(t,{division:`unity`,slug:e})}export{i as component};

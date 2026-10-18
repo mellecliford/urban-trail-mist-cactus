@@ -1,13 +1,17 @@
 FROM node:22-bookworm-slim AS build
 WORKDIR /app
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+ENV CI=1
+# Never migrate during the image build. Hosts inject DATABASE_URL at build
+# time, and Postgres is not running yet — `npm run build` would fail the image.
+ENV DATABASE_URL=
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 ARG VITE_PUBLIC_HOSTNAME=eveopsgroup.cloud
 ENV VITE_PUBLIC_HOSTNAME=$VITE_PUBLIC_HOSTNAME
 ENV NITRO_PRESET=node-server
-RUN npm run build
+RUN node scripts/with-app-env.mjs vite build
 
 FROM node:22-bookworm-slim AS run
 WORKDIR /app
