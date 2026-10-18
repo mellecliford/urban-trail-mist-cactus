@@ -23,7 +23,7 @@ export default function ShowcaseDetailPage({ item }: { item: ShowcaseItem | null
         </LocaleLink>
         <p className="showcase-detail__division">{division}</p>
         <h1>{item.name}</h1>
-        {item.hasMedia ? <img className="showcase-detail__media" src={`/api/showcase-media/${item.id}`} alt="" /> : null}
+        {item.hasMedia ? <img className="showcase-detail__media" src={`/api/showcase-media/${item.id}`} alt="" width={1200} height={750} decoding="async" /> : null}
         {item.category ? <p className="showcase-detail__meta">{item.category}</p> : null}
         <p className="showcase-detail__summary">{fr && item.summaryFr ? item.summaryFr : item.summary}</p>
       </div>

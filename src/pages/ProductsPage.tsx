@@ -92,7 +92,7 @@ export default function ProductsPage({ items }: { items: ShowcaseItem[] }) {
                 <div className="showcase__grid">
                   {rows.map((item) => (
                     <article className="showcase-card" key={item.id}>
-                      {item.hasMedia ? <img src={`/api/showcase-media/${item.id}`} alt="" /> : null}
+                      {item.hasMedia ? <img src={`/api/showcase-media/${item.id}`} alt="" width={640} height={400} loading="lazy" decoding="async" /> : null}
                       <p>{statusLabel(item.status, fr)}</p>
                       <h3>{item.name}</h3>
                       {item.category ? <span>{item.category}</span> : null}

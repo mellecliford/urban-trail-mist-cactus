@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { assets, brand, navItems } from "@/content/site";
@@ -97,8 +97,17 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [divisionsOpen, setDivisionsOpen] = useState(false);
+  const closeDivisions = useRef<number | null>(null);
+  const openMenu = () => {
+    if (closeDivisions.current) window.clearTimeout(closeDivisions.current);
+    setDivisionsOpen(true);
+  };
+  const scheduleClose = () => {
+    if (closeDivisions.current) window.clearTimeout(closeDivisions.current);
+    closeDivisions.current = window.setTimeout(() => setDivisionsOpen(false), 220);
+  };
   const isHome = pathname === "/";
-  const isDark = pathname.startsWith("/edevops") || isHome;
+  const isDark = pathname.startsWith("/edevops");
   const megaId = useId();
 
   useEffect(() => {
@@ -123,7 +132,6 @@ export function SiteHeader() {
   const chromeClass = [
     "site-chrome",
     isDark ? "site-chrome--dark" : "site-chrome--light",
-    isHome ? "site-chrome--over-hero" : "",
     scrolled || !isHome ? "site-chrome--solid" : "",
     open ? "site-chrome--open" : "",
   ]
@@ -146,8 +154,8 @@ export function SiteHeader() {
           ))}
           <div
             className={`site-chrome__mega-wrap ${divisionsOpen ? "is-open" : ""}`}
-            onMouseEnter={() => setDivisionsOpen(true)}
-            onMouseLeave={() => setDivisionsOpen(false)}
+            onMouseEnter={openMenu}
+            onMouseLeave={scheduleClose}
           >
             <button
               type="button"
@@ -343,7 +351,7 @@ export function UnityHeader() {
       </div>
       <div className="container unity-chrome__bar">
         <LocaleLink to="/unity" className="unity-lockup" aria-label="Unity Integrated Solutions home">
-          <img src={assets.unityMark} alt="" className="unity-lockup__mark" />
+          <img src={assets.unityMark} alt="" className="unity-lockup__mark" width={34} height={34} decoding="async" />
           <span className="unity-lockup__text">
             <strong>UNITY</strong>
             <small>Integrated Solutions</small>
@@ -403,7 +411,7 @@ export function UnityFooter() {
         <div className="unity-footer__main">
           <div>
             <LocaleLink to="/unity" className="unity-lockup unity-lockup--footer">
-              <img src={assets.unityMark} alt="" className="unity-lockup__mark" />
+              <img src={assets.unityMark} alt="" className="unity-lockup__mark" width={34} height={34} decoding="async" />
               <span className="unity-lockup__text">
                 <strong>UNITY</strong>
                 <small>Integrated Solutions</small>

@@ -43,6 +43,8 @@ export default function DivisionPage({ division }: { division: DivisionKey }) {
         <div className="division-hero__media">
           <img
             src={item.image}
+            srcSet={`${item.image.replace(".webp", "-800.webp")} 800w, ${item.image} 1800w`}
+            sizes="(max-width: 760px) 100vw, 60vw"
             alt={fr ? `Illustration du travail ${item.name}` : `${item.name} work`}
             width={1800}
             height={1013}
@@ -60,7 +62,7 @@ export default function DivisionPage({ division }: { division: DivisionKey }) {
           <div className="division-hero__copy">
             {isUnity && (
               <LocaleLink to="/unity/contact" className="unity-hero__brand-entry" aria-label="Start a Unity service brief">
-                <img src={assets.unityMark} alt="" />
+                <img src={assets.unityMark} alt="" width={48} height={48} decoding="async" />
                 <span>
                   <small>Unity Integrated Solutions</small>
                   <strong>

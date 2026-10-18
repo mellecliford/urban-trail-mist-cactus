@@ -6,55 +6,34 @@ import type { PublicLocale } from "@/lib/publicLocale";
 export function HomeHero({ locale }: { locale: PublicLocale }) {
   const fr = locale === "fr";
   return (
-    <section className="gate-hero">
-      <div className="gate-hero__glow" aria-hidden="true" />
-      <div className="container gate-hero__layout">
-        <div className="gate-hero__copy">
-          <p className="gate-hero__kicker">eveOps Group</p>
+    <section className="firm-hero">
+      <div className="container firm-hero__layout">
+        <div className="firm-hero__copy">
+          <p className="firm-hero__kicker">eveOps Group</p>
           <h1>
-            {fr ? (
-              <>
-                Deux métiers.
-                <br />
-                <em>Un groupe.</em>
-              </>
-            ) : (
-              <>
-                Two practices.
-                <br />
-                <em>One group.</em>
-              </>
-            )}
+            {fr ? "L’expertise humaine et le logiciel, dans un seul groupe." : "Human expertise and software, in one group."}
           </h1>
           <p>
             {fr
-              ? "Unity Integrated Solutions pour les équipes et les opérations. eveDev Ops pour le logiciel, l’IA et les produits."
-              : "Unity Integrated Solutions for people and operations. eveDev Ops for software, AI, and products."}
+              ? "Unity Integrated Solutions mène les services professionnels. eveDev Ops construit le logiciel, l’IA et les produits."
+              : "Unity Integrated Solutions runs the professional services. eveDev Ops builds the software, AI, and products."}
           </p>
-          <div className="gate-hero__actions">
+          <div className="firm-hero__actions">
             <QuickContactModal locale={locale} />
-            <a className="gate-hero__textlink" href="#divisions">
-              {fr ? "Voir les deux" : "See both"}
-            </a>
           </div>
         </div>
-        <div className="gate-hero__boards">
-          <i className="gate-hero__seam" aria-hidden="true" />
-          <LocaleLink to="/unity" className="gate-board gate-board--unity">
-            <span>01</span>
-            <strong>Unity</strong>
-            <em>Integrated Solutions</em>
-            <small>{fr ? "Équipes · langues · données · achats" : "People · language · data · procurement"}</small>
+        <nav className="firm-hero__routes" aria-label={fr ? "Divisions" : "Divisions"}>
+          <LocaleLink to="/unity">
+            <span>Unity Integrated Solutions</span>
+            <small>{fr ? "Équipes, langues, données, achats" : "People, language, data, procurement"}</small>
             <ArrowUpRight size={18} />
           </LocaleLink>
-          <LocaleLink to="/edevops" className="gate-board gate-board--dev">
-            <span>02</span>
-            <strong>eveDev</strong>
-            <em>Ops</em>
-            <small>{fr ? "Logiciel · IA · produits" : "Software · AI · products"}</small>
+          <LocaleLink to="/edevops">
+            <span>eveDev Ops</span>
+            <small>{fr ? "Logiciel, IA et produits" : "Software, AI, and products"}</small>
             <ArrowUpRight size={18} />
           </LocaleLink>
-        </div>
+        </nav>
       </div>
     </section>
   );
