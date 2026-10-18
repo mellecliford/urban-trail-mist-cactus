@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Private and platform paths
+Disallow: /api/
+Disallow: /__grok/
+Disallow: /admin
+
+Sitemap: https://eveopsgroup.cloud/sitemap.xml

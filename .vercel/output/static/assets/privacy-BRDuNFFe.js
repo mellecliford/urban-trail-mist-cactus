@@ -1,0 +1,1 @@
+import{v as e}from"./LocaleLink-CROJhYTO.js";import{t}from"./LegalPage-CzVNhOz6.js";var n=e(),r=()=>(0,n.jsx)(t,{type:`privacy`});export{r as component};

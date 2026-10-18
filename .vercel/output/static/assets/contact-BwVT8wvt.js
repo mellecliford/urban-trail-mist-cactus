@@ -1,0 +1,1 @@
+import{t as e}from"./ContactPage-B7AtkDuK.js";var t=e;export{t as component};

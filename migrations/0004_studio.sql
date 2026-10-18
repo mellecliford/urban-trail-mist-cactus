@@ -1,0 +1,42 @@
+create table if not exists site_settings (
+  id text primary key,
+  group_email text not null default '',
+  group_phone text not null default '',
+  group_whatsapp text not null default '',
+  group_address text not null default '',
+  group_hours text not null default '',
+  unity_email text not null default '',
+  unity_phone text not null default '',
+  unity_whatsapp text not null default '',
+  unity_address text not null default '',
+  edevops_email text not null default '',
+  edevops_phone text not null default '',
+  edevops_whatsapp text not null default '',
+  edevops_address text not null default '',
+  notify_email text not null default '',
+  smtp_host text not null default '',
+  smtp_port integer not null default 587,
+  smtp_user text not null default '',
+  smtp_password text not null default '',
+  smtp_from text not null default '',
+  smtp_secure boolean not null default false,
+  smtp_enabled boolean not null default false
+);
+
+create table if not exists customers (
+  id text primary key,
+  name text not null,
+  email text not null,
+  company text not null default '',
+  phone text not null default '',
+  country text not null default '',
+  division text not null default 'group',
+  service text not null default '',
+  message text not null default '',
+  volume text not null default '',
+  deadline text not null default '',
+  communication text not null default '',
+  status text not null default 'new',
+  notes text not null default '',
+  created_at timestamptz not null default now()
+);
